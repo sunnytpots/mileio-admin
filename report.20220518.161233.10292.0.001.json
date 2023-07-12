@@ -1,0 +1,515 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20220518.161233.10292.0.001.json",
+    "dumpEventTime": "2022-05-18T16:12:33Z",
+    "dumpEventTimeStamp": "1652879553931",
+    "processId": 10292,
+    "cwd": "/home/tal/projects/mileio-admin",
+    "commandLine": [
+      "/home/tal/.nvm/versions/node/v12.16.1/bin/node",
+      "/home/tal/projects/mileio-admin/node_modules/.bin/nuxt",
+      "--port",
+      "3001"
+    ],
+    "nodejsVersion": "v12.16.1",
+    "glibcVersionRuntime": "2.31",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.16.1",
+      "v8": "7.8.279.23-node.31",
+      "uv": "1.34.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.13.0-41-generic",
+    "osVersion": "#46~20.04.1-Ubuntu SMP Wed Apr 20 13:16:21 UTC 2022",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 900,
+        "user": 75678400,
+        "nice": 112600,
+        "sys": 28696500,
+        "idle": 2689452600,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 1708,
+        "user": 73436200,
+        "nice": 137600,
+        "sys": 28996600,
+        "idle": 2694377500,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 800,
+        "user": 74188400,
+        "nice": 125400,
+        "sys": 28500400,
+        "idle": 2696462900,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 800,
+        "user": 72979200,
+        "nice": 106400,
+        "sys": 28243500,
+        "idle": 2698000200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 1300,
+        "user": 68324900,
+        "nice": 50800,
+        "sys": 28090600,
+        "idle": 2703941200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 900,
+        "user": 67858300,
+        "nice": 102300,
+        "sys": 28429400,
+        "idle": 2702274700,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 2583,
+        "user": 70879100,
+        "nice": 101000,
+        "sys": 28580200,
+        "idle": 2683615200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+        "speed": 800,
+        "user": 71187400,
+        "nice": 152000,
+        "sys": 28626000,
+        "idle": 2690796100,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "eno1",
+        "internal": false,
+        "mac": "10:c3:7b:6f:50:93",
+        "address": "192.168.1.162",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "eno1",
+        "internal": false,
+        "mac": "10:c3:7b:6f:50:93",
+        "address": "fe80::2cd2:8026:417d:9b87",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      }
+    ],
+    "host": "tal"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b278f5",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x00000000009f13ec",
+      "symbol": "node::OnFatalError(char const*, char const*) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b5da9e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b5de19",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0a765",
+      "symbol": " [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0adf6",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d1760a",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d18515",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d1afcc",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000ce19bb",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x00000000010246ce",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x00000000013a71b9",
+      "symbol": " [/home/tal/.nvm/versions/node/v12.16.1/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2163052544,
+    "totalCommittedMemory": 2161808216,
+    "usedMemory": 2146328000,
+    "availableMemory": 37458912,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 2621440,
+        "committedMemory": 1791184,
+        "capacity": 1309320,
+        "used": 609088,
+        "available": 700232
+      },
+      "old_space": {
+        "memorySize": 1828077568,
+        "committedMemory": 1827989040,
+        "capacity": 1821511392,
+        "used": 1820824784,
+        "available": 686608
+      },
+      "code_space": {
+        "memorySize": 5410816,
+        "committedMemory": 5315776,
+        "capacity": 4847936,
+        "used": 4847936,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 15208448,
+        "committedMemory": 15207000,
+        "capacity": 9458400,
+        "used": 9458400,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 310267904,
+        "committedMemory": 310267904,
+        "capacity": 309460232,
+        "used": 309460232,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 1204224,
+        "committedMemory": 1204224,
+        "capacity": 1094752,
+        "used": 1094752,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1309320,
+        "used": 0,
+        "available": 1309320
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 975.73,
+    "kernelCpuSeconds": 24.1937,
+    "cpuConsumptionPercent": 0.376156,
+    "maxRss": 2109165568,
+    "pageFaults": {
+      "IORequired": 24954,
+      "IONotRequired": 6784559
+    },
+    "fsActivity": {
+      "reads": 539616,
+      "writes": 2928
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 467.183,
+    "kernelCpuSeconds": 14.2881,
+    "cpuConsumptionPercent": 0.181122,
+    "fsActivity": {
+      "reads": 272952,
+      "writes": 16
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "TERM_SESSION_ID": "4b381090-36b4-4675-97ce-0db7500de429",
+    "GJS_DEBUG_TOPICS": "JS ERROR;JS LOG",
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "npm_package_devDependencies__nuxtjs_eslint_module": "^2.0.0",
+    "LANGUAGE": "en_IL:en",
+    "SNAP_INSTANCE_KEY": "",
+    "USER": "tal",
+    "SNAP_COMMON": "/var/snap/webstorm/common",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_user_agent": "yarn/1.22.17 npm/? node/v12.16.1 linux x64",
+    "npm_package_dependencies_add": "^2.0.6",
+    "npm_config_bin_links": "true",
+    "SSH_AGENT_PID": "1899",
+    "XDG_SESSION_TYPE": "x11",
+    "npm_node_execpath": "/home/tal/.nvm/versions/node/v12.16.1/bin/node",
+    "npm_config_init_version": "1.0.0",
+    "SHLVL": "1",
+    "npm_package_dependencies_vue_socket_io": "^3.0.10",
+    "HOME": "/home/tal",
+    "SNAP_LIBRARY_PATH": "/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void",
+    "npm_package_devDependencies_eslint_plugin_nuxt": "^1.0.0",
+    "npm_package_dependencies_vuelidate": "^0.7.6",
+    "npm_package_dependencies_vue_the_mask": "^0.11.1",
+    "DESKTOP_SESSION": "ubuntu",
+    "SNAP_USER_DATA": "/home/tal/snap/webstorm/257",
+    "NVM_BIN": "/home/tal/.nvm/versions/node/v12.16.1/bin",
+    "npm_package_dependencies_animate_css": "^4.1.1",
+    "NVM_INC": "/home/tal/.nvm/versions/node/v12.16.1/include/node",
+    "TERMINAL_EMULATOR": "JetBrains-JediTerm",
+    "GIO_LAUNCHED_DESKTOP_FILE": "/var/lib/snapd/desktop/applications/webstorm_webstorm.desktop",
+    "npm_config_init_license": "MIT",
+    "GNOME_SHELL_SESSION_MODE": "ubuntu",
+    "GTK_MODULES": "gail:atk-bridge",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_package_devDependencies__nuxtjs_vuetify": "^1.11.2",
+    "npm_config_version_tag_prefix": "v",
+    "MANAGERPID": "1699",
+    "npm_package_devDependencies_socket_io_client": "^1.7.2",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "npm_package_dependencies_moment": "^2.29.1",
+    "SNAP_REVISION": "257",
+    "GIO_LAUNCHED_DESKTOP_FILE_PID": "2309",
+    "npm_package_description": "## Build Setup",
+    "NVM_DIR": "/home/tal/.nvm",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_dependencies_nuxt": "^2.14.0",
+    "npm_package_dependencies_jwt_decode": "^3.1.2",
+    "IM_CONFIG_PHASE": "1",
+    "npm_package_scripts_dev": "nuxt --port 3001",
+    "LOGNAME": "tal",
+    "npm_package_dependencies_vue_qrcode_reader": "^3.0.0",
+    "npm_package_dependencies_nuxt_socket_io": "^1.1.14",
+    "SNAP_CONTEXT": "TPAovww-cyvXYOW9-8-DvyReITIE1_9RrqNwQnWh4aQqhq1WyScU",
+    "JOURNAL_STREAM": "8:41792",
+    "_": "/usr/bin/yarn",
+    "npm_package_private": "true",
+    "XDG_SESSION_CLASS": "user",
+    "SNAP_VERSION": "2022.1.1",
+    "npm_package_devDependencies_socket_io": "^1.7.2",
+    "npm_package_dependencies_vue_tabevents": "^1.2.0",
+    "npm_package_scripts_lint": "yarn lint:js",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "USERNAME": "tal",
+    "TERM": "xterm-256color",
+    "GNOME_DESKTOP_SESSION_ID": "this-is-deprecated",
+    "SNAP_INSTANCE_NAME": "webstorm",
+    "npm_package_dependencies_vue_barcode_reader": "^0.0.3",
+    "npm_package_scripts_start": "nuxt start --port 3001",
+    "npm_config_ignore_scripts": "",
+    "WINDOWPATH": "2",
+    "npm_package_dependencies_nuxt_gmaps": "^1.2.10",
+    "PATH": "/tmp/yarn--1652613726714-0.036854766668638295:/home/tal/projects/mileio-admin/node_modules/.bin:/home/tal/.config/yarn/link/node_modules/.bin:/home/tal/.yarn/bin:/home/tal/.nvm/versions/node/v12.16.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/tal/.nvm/versions/node/v12.16.1/lib/node_modules/npm/bin/node-gyp-bin:/home/tal/.nvm/versions/node/v12.16.1/bin/node_modules/npm/bin/node-gyp-bin:/home/tal/.nvm/versions/node/v12.16.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tal/projects/mileio-admin/node_modules/.bin",
+    "NODE": "/home/tal/.nvm/versions/node/v12.16.1/bin/node",
+    "SESSION_MANAGER": "local/tal:@/tmp/.ICE-unix/1936,unix/tal:/tmp/.ICE-unix/1936",
+    "INVOCATION_ID": "c0d0c998fa8f4780bc9bcbf2a91baaa2",
+    "npm_package_dependencies__googlemaps_js_api_loader": "^1.11.3",
+    "npm_package_scripts_lint_js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "npm_package_name": "tapuz-delivery",
+    "XDG_MENU_PREFIX": "gnome-",
+    "BAMF_DESKTOP_FILE_HINT": "/var/lib/snapd/desktop/applications/webstorm_webstorm.desktop",
+    "SNAP_DATA": "/var/snap/webstorm/257",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "npm_package_dependencies__nuxtjs_router_extras": "^1.1.1",
+    "DISPLAY": ":0",
+    "DESKTOP_STARTUP_ID": "gnome-shell/WebStorm/1950-0-tal_TIME184992",
+    "LANG": "en_IL",
+    "XDG_CURRENT_DESKTOP": "ubuntu:GNOME",
+    "npm_package_devDependencies_eslint": "^7.5.0",
+    "npm_package_devDependencies__nuxtjs_eslint_config": "^3.1.0",
+    "XMODIFIERS": "@im=ibus",
+    "XDG_SESSION_DESKTOP": "ubuntu",
+    "XAUTHORITY": "/run/user/1000/gdm/Xauthority",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "npm_lifecycle_script": "nuxt --port 3001",
+    "SNAP_USER_COMMON": "/home/tal/snap/webstorm/common",
+    "SSH_AUTH_SOCK": "/run/user/1000/keyring/ssh",
+    "SNAP_ARCH": "amd64",
+    "SNAP_COOKIE": "TPAovww-cyvXYOW9-8-DvyReITIE1_9RrqNwQnWh4aQqhq1WyScU",
+    "npm_config_version_git_message": "v%s",
+    "SHELL": "/bin/bash",
+    "npm_lifecycle_event": "dev",
+    "npm_package_dependencies_vuedraggable": "^2.24.3",
+    "npm_package_version": "1.0.0",
+    "QT_ACCESSIBILITY": "1",
+    "SNAP_REEXEC": "",
+    "GDMSESSION": "ubuntu",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"dev\"],\"original\":[\"dev\"]}",
+    "npm_package_dependencies_cookie": "^0.4.1",
+    "npm_package_dependencies__fortawesome_fontawesome_free": "^5.15.2",
+    "npm_package_scripts_build": "nuxt build",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "SNAP_NAME": "webstorm",
+    "npm_package_dependencies_lodash": "^4.17.21",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_git_sign": "",
+    "GPG_AGENT_INFO": "/run/user/1000/gnupg/S.gpg-agent:0:1",
+    "GJS_DEBUG_OUTPUT": "stderr",
+    "npm_package_dependencies_yarn": "^1.22.10",
+    "npm_package_dependencies_vue_json_csv": "^1.2.12",
+    "npm_package_scripts_generate": "nuxt generate",
+    "npm_config_strict_ssl": "true",
+    "QT_IM_MODULE": "ibus",
+    "npm_package_dependencies_js_cookie": "^2.2.1",
+    "PWD": "/home/tal/projects/mileio-admin",
+    "npm_execpath": "/usr/share/yarn/bin/yarn.js",
+    "npm_package_dependencies_vue_json_excel": "^0.3.0",
+    "XDG_CONFIG_DIRS": "/etc/xdg/xdg-ubuntu:/etc/xdg",
+    "SNAP_REAL_HOME": "/home/tal",
+    "NVM_CD_FLAGS": "",
+    "XDG_DATA_DIRS": "/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop",
+    "npm_package_devDependencies_source_map_loader": "^2.0.0",
+    "npm_package_devDependencies_axios": "^0.21.1",
+    "SNAP": "/snap/webstorm/257",
+    "npm_config_save_prefix": "^",
+    "npm_config_ignore_optional": "",
+    "npm_package_devDependencies_babel_eslint": "^10.1.0",
+    "npm_package_dependencies__nuxtjs_axios": "^5.12.0",
+    "INIT_CWD": "/home/tal/projects/mileio-admin",
+    "npm_package_dependencies_vue_barcode": "^1.3.0",
+    "NODE_ENV": "development",
+    "_applied": "true",
+    "NUXT_ENV_BASE_URL": "http://localhost:3001",
+    "NUXT_ENV_APP_NAME": "mile-io",
+    "NUXT_ENV_API_URL": "http://localhost:4000",
+    "NUXT_ENV_FILE_URL": "http://localhost:4000",
+    "_AXIOS_BASE_URL_": "http://localhost:4000",
+    "VUE_ENV": "server"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 67108864,
+      "hard": 67108864
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 63252,
+      "hard": 63252
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/lib/x86_64-linux-gnu/libnss_files.so.2",
+    "/lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2",
+    "/lib/x86_64-linux-gnu/libresolv.so.2",
+    "/lib/x86_64-linux-gnu/libnss_dns.so.2"
+  ]
+}
