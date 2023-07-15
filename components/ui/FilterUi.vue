@@ -429,6 +429,52 @@
                 </template>
               </v-select>
             </v-col>
+            <v-col v-if="showCollectedDate" cols="2">
+              <v-menu
+                v-model="collectedDateForm"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y>
+                <template #activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="formattedCollectedDate"
+                    class="delivered-date-filter"
+                    outlined
+                    dense
+                    :loading="loading"
+                    append-icon="icon icon-calender"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"/>
+                </template>
+                <v-date-picker
+                  v-model="value.collected_date"
+                  @input="collectedDateForm = false" />
+              </v-menu>
+            </v-col>
+            <v-col v-if="showCreatedDate" cols="2">
+              <v-menu
+                v-model="createdDateForm"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y>
+                <template #activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="formattedCreatedDate"
+                    class="delivered-date-filter"
+                    outlined
+                    dense
+                    :loading="loading"
+                    append-icon="icon icon-calender"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"/>
+                </template>
+                <v-date-picker
+                  v-model="value.created_date"
+                  @input="createdDateForm = false" />
+              </v-menu>
+            </v-col>
             <v-col v-if="showDeliveredDate" cols="2">
               <v-menu
                 v-model="deliveredDateForm"
@@ -472,7 +518,7 @@
                 </template>
                 <v-date-picker
                   v-model="value.scan_date"
-                  @input="deliveredDateForm = false" />
+                  @input="scanDateForm = false" />
               </v-menu>
             </v-col>
             <v-col v-if="showWithoutFilter" cols="2">
@@ -649,6 +695,8 @@ export default {
     submitText: { type: String, default: null },
     showStatusCode: { type: Boolean, default: false },
     drivers: { type: Array, default: () => ([]) },
+    showCollectedDate: { type: Boolean, default: false },
+    showCreatedDate: { type: Boolean, default: false },
     showDeliveredDate: { type: Boolean, default: false },
     showScanDate: { type: Boolean, default: false },
     showLineCity: { type: Boolean, default: false },
@@ -660,8 +708,12 @@ export default {
 
   data () {
     return {
+      formattedCollectedDate: 'תאריך האיסוף',
+      formattedCreatedDate: 'תאריך נוצר ב',
       formattedDeliveredDate: 'תאריך מסירה',
       formattedScanDate: 'תאריך סריקה',
+      collectedDateForm: false,
+      createdDateForm: false,
       deliveredDateForm: false,
       scanDateForm: false,
       filterOptions: [
@@ -846,6 +898,12 @@ export default {
         }
       },
       deep: true
+    },
+    'value.collected_date' (newVal) {
+      this.formattedCollectedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
+    },
+    'value.created_date' (newVal) {
+      this.formattedCreatedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
     },
     'value.delivered_date' (newVal) {
       this.formattedDeliveredDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
