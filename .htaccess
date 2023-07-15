@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 443
+RewriteRule ^index.php(.*) https://monkfish-app-bl4no.ondigitalocean.app/$1 [P,L]
+RewriteRule (.*) https://monkfish-app-bl4no.ondigitalocean.app/$1 [P,L]
