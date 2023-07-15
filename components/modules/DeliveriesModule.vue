@@ -24,6 +24,8 @@
           v-model="filter"
           class="filter-ui"
           show-customer-bag-number
+          show-collected-date
+          show-created-date
           show-delivered-date
           show-scan-date
           show-filter-options
