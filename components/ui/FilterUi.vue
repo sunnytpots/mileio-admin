@@ -57,6 +57,37 @@
                 filled
                 label="קוד סטאטוס" />
             </v-col>
+            <v-col v-if="showColumnManageType" cols="6">
+              <v-select
+                v-model="value.column_manage"
+                class="select-ui"
+                :items="columnManageType"
+                item-text="key"
+                item-value="value"
+                rounded
+                filled
+                label="סוג ניהול עמודות">
+                <template v-slot:append>
+                  <i class="icon icon-arrowSelect"/>
+                </template>
+              </v-select>
+            </v-col>
+            <v-col v-if="showReportType" cols="8">
+              <v-select
+                v-model="report_type_default_selected"
+                class="select-ui"
+                :items="reportType"
+                item-text="key"
+                item-value="value"
+                rounded
+                filled
+                :disabled="true"
+                label="סוג דוח">
+                <template v-slot:append>
+                  <i class="icon icon-arrowSelect"/>
+                </template>
+              </v-select>
+            </v-col>
             <v-col v-if="showBranches" cols="2">
               <v-text-field
                 v-model="value.branch"
@@ -622,6 +653,8 @@ export default {
     showScanDate: { type: Boolean, default: false },
     showLineCity: { type: Boolean, default: false },
     showLineStreet: { type: Boolean, default: false },
+    showColumnManageType: { type: Boolean, default: false },
+    showReportType: { type: Boolean, default: false },
     showLineNumber: { type: Boolean, default: false }
   },
 
@@ -643,6 +676,28 @@ export default {
       searchCustomerCity: '',
       searchCity: '',
       citiesArray: [{ city_name: 'ללא עיר לקוח' }],
+      columnManageType: [
+        { value: "excel", key: "לְהִצטַיֵן"},
+        { value: "display", key: "לְהַצִיג"}
+      ],
+      report_type_default_selected: { value: "usersSettings", key: "הגדרות משתמשים"},
+      reportType: [
+        { value: "deliveries", key: "משלוחים"},
+        { value: "distributionPointsList", key: "נקודות חלוקה"},
+        { value: "usersSettings", key: "הגדרות משתמשים"},
+        { value: "smsMessagesSettings", key: "הודעות SMS"},
+        { value: "refunds", key: "זיכויים"},
+        { value: "distributionPointBags", key: "שקי נקודות חלוקה"},
+        { value: "distributionDeliveriesPoints", key: "משלוחי נקודות חלוקה"},
+        { value: "customers", key: "לקוחות"},
+        { value: "driversManagement", key: "ניהול נהגים"},
+        { value: "drivers", key: "נהגים"},
+        { value: "customerBags", key: "שקי לקוחות"},
+        { value: "collectionTasks", key: "משימות איסוף"},
+        { value: "polygons", key: "פוליגונים"},
+        { value: "scans", key: "סריקות"},
+        { value: "example", key: "מסמך דוגמה"},
+      ],
       statusCodes: [
         100, 101, 102, 103, 200,
         201, 202, 203, 204, 205, 206,
