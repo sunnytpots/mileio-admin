@@ -296,13 +296,6 @@ export default {
           icon: 'icon-people',
           key: 'settings-tags-management',
           to: { name: 'settings-tags-management' }
-        },
-        {
-          name: "ניהול עמודות משתמש",
-          desc: "",
-          icon: "icon-users",
-          key: "settings-column-management",
-          to: { name: "settings-column-management" }
         }
       ]
     }
