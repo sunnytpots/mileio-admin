@@ -117,7 +117,8 @@ export default {
         'settings-pricing-polygon': { title: 'צור מחירון', dialogUi: true },
         'settings-causes-failures': { title: 'יצירת סיבת כשל', dialogUi: true },
         'distribution-points-list': { title: 'יצירת נקודת חלוקה', dialogUi: true, to: { name: 'distribution-points-list-distribution-point' } },
-        'distribution-points-coordinator': { title: 'יצירת משלוח', dialogUi: true, to: { name: 'distribution-points-coordinator-delivery' } }
+        'distribution-points-coordinator': { title: 'יצירת משלוח', dialogUi: true, to: { name: 'distribution-points-coordinator-delivery' } },
+        'settings-column-management': { title: 'ניהול עמודות משתמש', dialogUi: true }
       },
       actions: [
         { name: 'העלאת קובץ', key: 'uploadFile' },

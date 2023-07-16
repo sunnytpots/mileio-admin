@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
   name: 'ExportReport',
@@ -86,6 +87,7 @@ export default {
     }
   },
   computed: {
+    ...mapState("global", ["driversSelected"]),
     options () {
       let options = []
       if (this.specificOption) {
@@ -152,7 +154,7 @@ export default {
         const response = await this.$reportsService.addReport({
           ...this.pagination,
           filter: this.filter,
-          byDriverIds: this.byDriverIds,
+          byDriverIds: this.driversSelected,
           branchId: this.branchId,
           report_type: this.reportType,
           schema_type: schemaType

@@ -57,6 +57,37 @@
                 filled
                 label="קוד סטאטוס" />
             </v-col>
+            <v-col v-if="showColumnManageType" cols="6">
+              <v-select
+                v-model="value.column_manage"
+                class="select-ui"
+                :items="columnManageType"
+                item-text="key"
+                item-value="value"
+                rounded
+                filled
+                label="סוג ניהול עמודות">
+                <template v-slot:append>
+                  <i class="icon icon-arrowSelect"/>
+                </template>
+              </v-select>
+            </v-col>
+            <v-col v-if="showReportType" cols="8">
+              <v-select
+                v-model="report_type_default_selected"
+                class="select-ui"
+                :items="reportType"
+                item-text="key"
+                item-value="value"
+                rounded
+                filled
+                :disabled="true"
+                label="סוג דוח">
+                <template v-slot:append>
+                  <i class="icon icon-arrowSelect"/>
+                </template>
+              </v-select>
+            </v-col>
             <v-col v-if="showBranches" cols="2">
               <v-text-field
                 v-model="value.branch"
@@ -398,6 +429,52 @@
                 </template>
               </v-select>
             </v-col>
+            <v-col v-if="showCollectedDate" cols="2">
+              <v-menu
+                v-model="collectedDateForm"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y>
+                <template #activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="formattedCollectedDate"
+                    class="delivered-date-filter"
+                    outlined
+                    dense
+                    :loading="loading"
+                    append-icon="icon icon-calender"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"/>
+                </template>
+                <v-date-picker
+                  v-model="value.collected_date"
+                  @input="collectedDateForm = false" />
+              </v-menu>
+            </v-col>
+            <v-col v-if="showCreatedDate" cols="2">
+              <v-menu
+                v-model="createdDateForm"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y>
+                <template #activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="formattedCreatedDate"
+                    class="delivered-date-filter"
+                    outlined
+                    dense
+                    :loading="loading"
+                    append-icon="icon icon-calender"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"/>
+                </template>
+                <v-date-picker
+                  v-model="value.created_date"
+                  @input="createdDateForm = false" />
+              </v-menu>
+            </v-col>
             <v-col v-if="showDeliveredDate" cols="2">
               <v-menu
                 v-model="deliveredDateForm"
@@ -441,7 +518,7 @@
                 </template>
                 <v-date-picker
                   v-model="value.scan_date"
-                  @input="deliveredDateForm = false" />
+                  @input="scanDateForm = false" />
               </v-menu>
             </v-col>
             <v-col v-if="showWithoutFilter" cols="2">
@@ -618,17 +695,25 @@ export default {
     submitText: { type: String, default: null },
     showStatusCode: { type: Boolean, default: false },
     drivers: { type: Array, default: () => ([]) },
+    showCollectedDate: { type: Boolean, default: false },
+    showCreatedDate: { type: Boolean, default: false },
     showDeliveredDate: { type: Boolean, default: false },
     showScanDate: { type: Boolean, default: false },
     showLineCity: { type: Boolean, default: false },
     showLineStreet: { type: Boolean, default: false },
+    showColumnManageType: { type: Boolean, default: false },
+    showReportType: { type: Boolean, default: false },
     showLineNumber: { type: Boolean, default: false }
   },
 
   data () {
     return {
+      formattedCollectedDate: 'תאריך האיסוף',
+      formattedCreatedDate: 'תאריך נוצר ב',
       formattedDeliveredDate: 'תאריך מסירה',
       formattedScanDate: 'תאריך סריקה',
+      collectedDateForm: false,
+      createdDateForm: false,
       deliveredDateForm: false,
       scanDateForm: false,
       filterOptions: [
@@ -643,6 +728,28 @@ export default {
       searchCustomerCity: '',
       searchCity: '',
       citiesArray: [{ city_name: 'ללא עיר לקוח' }],
+      columnManageType: [
+        { value: "excel", key: "לְהִצטַיֵן"},
+        { value: "display", key: "לְהַצִיג"}
+      ],
+      report_type_default_selected: { value: "usersSettings", key: "הגדרות משתמשים"},
+      reportType: [
+        { value: "deliveries", key: "משלוחים"},
+        { value: "distributionPointsList", key: "נקודות חלוקה"},
+        { value: "usersSettings", key: "הגדרות משתמשים"},
+        { value: "smsMessagesSettings", key: "הודעות SMS"},
+        { value: "refunds", key: "זיכויים"},
+        { value: "distributionPointBags", key: "שקי נקודות חלוקה"},
+        { value: "distributionDeliveriesPoints", key: "משלוחי נקודות חלוקה"},
+        { value: "customers", key: "לקוחות"},
+        { value: "driversManagement", key: "ניהול נהגים"},
+        { value: "drivers", key: "נהגים"},
+        { value: "customerBags", key: "שקי לקוחות"},
+        { value: "collectionTasks", key: "משימות איסוף"},
+        { value: "polygons", key: "פוליגונים"},
+        { value: "scans", key: "סריקות"},
+        { value: "example", key: "מסמך דוגמה"},
+      ],
       statusCodes: [
         100, 101, 102, 103, 200,
         201, 202, 203, 204, 205, 206,
@@ -791,6 +898,12 @@ export default {
         }
       },
       deep: true
+    },
+    'value.collected_date' (newVal) {
+      this.formattedCollectedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
+    },
+    'value.created_date' (newVal) {
+      this.formattedCreatedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
     },
     'value.delivered_date' (newVal) {
       this.formattedDeliveredDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
