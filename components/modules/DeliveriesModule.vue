@@ -24,8 +24,6 @@
           v-model="filter"
           class="filter-ui"
           show-customer-bag-number
-          show-collected-date
-          show-created-date
           show-delivered-date
           show-scan-date
           show-filter-options
@@ -442,10 +440,6 @@ export default {
         skip: 0,
         take: 100
       },
-      sortBy: {
-        value: null,
-        sortOrder: null
-      },
       tags: [],
       formNames: {
         '/coordinator/delivery': 'deliveryData',
@@ -558,16 +552,7 @@ export default {
       if (this.driversSelected?.length > 0) {
         arr.unshift({ text: 'סידור', align: 'center', value: 'position' })
       }
-      this.userColumnPermissions.forEach(allCol => {
-        arr.forEach((col, index) => {
-          if (allCol.value === col.text) {
-            if (!allCol.display) {
-              arr.splice(index, 1)
-            }
-          }
-        });
-      });
-      return arr;
+      return arr
     },
     deliveryTypesItems () {
       const arr = []
@@ -637,12 +622,8 @@ export default {
             skip: (newOptions.page - 1) * newOptions.itemsPerPage,
             take: newOptions.itemsPerPage
           }
-          this.sortBy = {
-            value: (sortBy[0] === 'last_scan' || sortBy[0] === 'collected_date') ? 'status_data.status_history.updated_at' : sortBy[0],
-            sortOrder: sortDesc[0] ? 'DESC' : 'ASC'
-          };
           await this.getDeliveriesViews()
-          /* this.items = this.items.sort((a, b) => {
+          this.items = this.items.sort((a, b) => {
             let sortA
             let sortB
             switch (sortBy[0]) {
@@ -729,9 +710,9 @@ export default {
             } else {
               return sortA < sortB ? -1 : sortA > sortB ? 1 : 0
             }
-          }) */
+          })
         } catch (e) {
-          this.$helper.snackbar(e, 'opt ions watch error')
+          this.$helper.snackbar(e, 'options watch error')
         }
       },
       deep: true
@@ -802,30 +783,9 @@ export default {
       ]
     })
     this.$store.dispatch('global/getFailureList')
-    this.fetchColumnsPermission()
     return this.filterHelper()
   },
   methods: {
-    async fetchColumnsPermission() {
-      this.userColumnPermissions = []
-      const payload = {
-        level_id: 1,
-        type: "deliveries"
-      };
-
-      try {
-        const response = await this.$manageUserColumns.list(payload);
-          await response[0].columnPermissions.map((res) => {
-              this.userColumnPermissions.push({
-                label: res.label,
-                value: res.value,
-                display: res.display
-              })
-          })
-      } catch (error) {
-        this.$helper.snackbar(error, "fetchColumnsPermission");
-      }
-    },
     getFirstScanDate (statusHistory) {
       if (!(statusHistory?.length > 1)) {
         return
@@ -958,7 +918,6 @@ export default {
         this.loading = true
         const response = await this.$deliveryService.viewDeliveries({
           ...this.pagination,
-          sortBy: this.sortBy,
           filter: this.filter,
           byDriverIds: this.driversSelected,
           branch_id: this.branchSelected
