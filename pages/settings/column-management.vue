@@ -142,7 +142,7 @@
               this.loading = true;
               const response = await this.$manageUserColumns.list();
               for (let index = 0; index < response.length; index++) {
-                if (response[index].type === 'usersSettings') {
+                if (response[index].type === 'deliveries') {
                   this.form.id = response[index].id;  // need to modify as id will be coming from loop
                   this.form.level_id = levelId;
                   this.form.type = response[index].type;
