@@ -12,11 +12,11 @@
           <small v-if="status.key === 'stored'">
             מחסן: {{ deliveryInfo.customer_address }}
           </small>
-          <small v-if="status.updated_by_user && this.authUser.level.id === 1">
+          <small v-if="status.updated_by_user && authUser.level.id === 1">
             <p style="margin-bottom: 0" v-text="'על ידי משתמש:'"/>
             <p style="margin-bottom: 0" v-text="status.updated_by_user"/>
           </small>
-          <small v-else-if="status.updated_by_driver && this.authUser.level.id === 1">
+          <small v-else-if="status.updated_by_driver && authUser.level.id === 1">
             <p style="margin-bottom: 0" v-text="'בוצע על ידי נהג:'"/>
             <p style="margin-bottom: 0" v-text="status.updated_by_driver"/>
           </small>
