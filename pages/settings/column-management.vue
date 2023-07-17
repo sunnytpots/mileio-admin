@@ -173,7 +173,7 @@
             this.drawerUi = true;
           },
           getData(response) {
-            response.status && window.location.reload();
+            response.status;
           },
           onSelect(value, index) {
             const column = this.form.columnPermissions[index];
