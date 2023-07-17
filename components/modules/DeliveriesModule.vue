@@ -426,6 +426,7 @@ export default {
       selected: [],
       associatedTo: null,
       items: [],
+      userColumnPermissions: [],
       totalItems: 1000,
       delivery: {},
       filter: {
