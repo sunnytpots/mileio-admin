@@ -18,79 +18,91 @@ export const state = () => ({
   driver: null,
   onUploadByCsv: false,
   footerProps: {
-    'items-per-page-options': [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000],
-    'items-per-page-text': 'מספר פריטים מקסימלי בעמוד:'
+    "items-per-page-options": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000,
+      2000
+    ],
+    "items-per-page-text": "מספר פריטים מקסימלי בעמוד:"
   }
-})
+});
 
 export const mutations = {
-  setDeliveryTypes (state, deliveryTypes) {
-    state.delivery_types = deliveryTypes
+  setDeliveryTypes(state, deliveryTypes) {
+    state.delivery_types = deliveryTypes;
   },
-  setCustomerList (state, customers) {
-    state.customers = customers
+  setCustomerList(state, customers) {
+    state.customers = customers;
   },
-  setDistributionPoints (state, distributionPoints) {
-    state.distribution_points = distributionPoints
+  setDistributionPoints(state, distributionPoints) {
+    state.distribution_points = distributionPoints;
   },
-  setDeliveryTypeStatusList (state, statuses) {
-    state.delivery_type_statuses = statuses
+  setDeliveryTypeStatusList(state, statuses) {
+    state.delivery_type_statuses = statuses;
   },
-  setDistributionPointCities (state, statuses) {
-    state.distribution_point_cities = statuses
+  setDistributionPointCities(state, statuses) {
+    state.distribution_point_cities = statuses;
   },
-  setCustomerBagsCities (state, statuses) {
-    state.customerBagsCities = statuses
+  setCustomerBagsCities(state, statuses) {
+    state.customerBagsCities = statuses;
   },
-  setFailureList (state, failureList) {
-    state.failureList = failureList
+  setFailureList(state, failureList) {
+    state.failureList = failureList;
   },
-  setDriverList (state, drivers) {
-    state.drivers = drivers
+  setDriverList(state, drivers) {
+    state.drivers = drivers;
   },
-  setTagList (state, tags) {
-    state.tagList = tags
+  setTagList(state, tags) {
+    state.tagList = tags;
   },
-  setBranchList (state, branches) {
-    state.branches = branches
+  setBranchList(state, branches) {
+    state.branches = branches;
   },
-  setLineList (state, lines) {
-    state.lines = lines
+  setLineList(state, lines) {
+    state.lines = lines;
   },
-  setDriverSelected (state, driver) {
-    state.driver = driver
+  setDriverSelected(state, driver) {
+    state.driver = driver;
   },
-  setToDriversArraySelected (state, driverUids) {
-    state.driversSelected = driverUids
-    state.onRemoveDriverSelected = false
+  setToDriversArraySelected(state, driverUids) {
+    state.driversSelected = driverUids;
+    state.onRemoveDriverSelected = false;
   },
-  setOnRemoveDriverSelected (state, value) {
-    state.onRemoveDriverSelected = value
+  setOnRemoveDriverSelected(state, value) {
+    state.onRemoveDriverSelected = value;
   },
-  removeFromDriversArraySelected (state, driverId) {
+  removeFromDriversArraySelected(state, driverId) {
     if (state.driversSelected && state.driversSelected.length > 1) {
-      state.driversSelected = state.driversSelected.filter(e => e !== driverId)
+      state.driversSelected = state.driversSelected.filter(e => e !== driverId);
     } else {
-      state.driversSelected = null
+      state.driversSelected = [];
     }
-    state.onRemoveDriverSelected = true
+    state.onRemoveDriverSelected = true;
   },
-  clearDriversArraySelected (state) {
-    state.driversSelected = []
+  clearDriversArraySelected(state) {
+    state.driversSelected = [];
   },
-  setCities (state, cities) {
-    state.cities = cities
+  setCities(state, cities) {
+    state.cities = cities;
   },
-  setBranches (state, branches) {
-    state.branches = branches
+  setBranches(state, branches) {
+    state.branches = branches;
   },
-  setExits (state, exits) {
-    state.exits = exits
+  setExits(state, exits) {
+    state.exits = exits;
   },
-  setOnUploadByCsv (state, value) {
-    state.onUploadByCsv = value
+  setOnUploadByCsv(state, value) {
+    state.onUploadByCsv = value;
   }
-}
+};
 
 export const actions = {
   /**
@@ -101,102 +113,111 @@ export const actions = {
    * @param form
    * @returns {Promise<void>}
    */
-  async getDeliveryTypes ({ commit, state }) {
+  async getDeliveryTypes({ commit, state }) {
     try {
-      const deliveryTypes = await this.$deliveryTypeService.list('delivery-type/view')
-      commit('setDeliveryTypes', deliveryTypes)
+      const deliveryTypes = await this.$deliveryTypeService.list(
+        "delivery-type/view"
+      );
+      commit("setDeliveryTypes", deliveryTypes);
       // response.status && commit('setAuthUser', response.authUser)
     } catch (e) {
-      this.$helper.snackbar(e, 'getDeliveryTypes')
+      this.$helper.snackbar(e, "getDeliveryTypes");
     }
   },
-  async getCustomerList ({ commit, state }, data) {
+  async getCustomerList({ commit, state }, data) {
     try {
-      const customers = await this.$customersService.list(data)
-      commit('setCustomerList', customers)
+      const customers = await this.$customersService.list(data);
+      commit("setCustomerList", customers);
     } catch (e) {
-      this.$helper.snackbar(e, 'getCustomerList')
+      this.$helper.snackbar(e, "getCustomerList");
     }
   },
-  async getDistributionPoints ({ commit, state }) {
+  async getDistributionPoints({ commit, state }) {
     try {
-      const distributionPoints = await this.$distributionPointsService.getDistributionPoints()
-      commit('setDistributionPoints', distributionPoints)
+      const distributionPoints = await this.$distributionPointsService.getDistributionPoints();
+      commit("setDistributionPoints", distributionPoints);
     } catch (e) {
-      this.$helper.snackbar(e, 'getDistributionPoints')
+      this.$helper.snackbar(e, "getDistributionPoints");
     }
   },
-  async getDeliveryTypeStatuses ({ commit, state }, data) {
+  async getDeliveryTypeStatuses({ commit, state }, data) {
     try {
-      const statuses = await this.$deliveryTypeStatusesService.getDeliveryStatus(data)
-      commit('setDeliveryTypeStatusList', statuses)
+      const statuses = await this.$deliveryTypeStatusesService.getDeliveryStatus(
+        data
+      );
+      commit("setDeliveryTypeStatusList", statuses);
     } catch (e) {
-      this.$helper.snackbar(e, 'getDeliveryTypeStatuses')
+      this.$helper.snackbar(e, "getDeliveryTypeStatuses");
     }
   },
-  async getDistributionPointCities ({ commit, state }, data) {
+  async getDistributionPointCities({ commit, state }, data) {
     try {
-      const statuses = await this.$distributionPointsService.getCities(data)
-      commit('setDistributionPointCities', statuses)
+      const statuses = await this.$distributionPointsService.getCities(data);
+      commit("setDistributionPointCities", statuses);
     } catch (e) {
-      this.$helper.snackbar(e, 'getDistributionPointCities')
+      this.$helper.snackbar(e, "getDistributionPointCities");
     }
   },
-  async getCustomerBagsCities ({ commit, state }, data) {
+  async getCustomerBagsCities({ commit, state }, data) {
     try {
-      const statuses = await this.$customerBagsService.getCities(data)
-      commit('setCustomerBagsCities', statuses)
+      const statuses = await this.$customerBagsService.getCities(data);
+      commit("setCustomerBagsCities", statuses);
     } catch (e) {
-      this.$helper.snackbar(e, 'getCustomerBagsCities')
+      this.$helper.snackbar(e, "getCustomerBagsCities");
     }
   },
-  async getFailureList ({ commit, state }, data) {
+  async getFailureList({ commit, state }, data) {
     try {
-      const res = await this.$causesFailuresService.viewFailures()
-      const failureList = res.map(failure => ({ key: failure.id, name: failure.value }))
-      commit('setFailureList', failureList)
+      const res = await this.$causesFailuresService.viewFailures();
+      const failureList = res.map(failure => ({
+        key: failure.id,
+        name: failure.value
+      }));
+      commit("setFailureList", failureList);
     } catch (e) {
-      this.$helper.snackbar(e, 'getFailureList')
+      this.$helper.snackbar(e, "getFailureList");
     }
   },
-  async getDriverList ({ commit, state }, data) {
+  async getDriverList({ commit, state }, data) {
     try {
-      const response = await this.$driverService.driverView(data)
-      commit('setDriverList', response?.items)
+      const response = await this.$driverService.driverView(data);
+      commit("setDriverList", response?.items);
     } catch (e) {
-      this.$helper.snackbar(e, 'getDriverList')
+      this.$helper.snackbar(e, "getDriverList");
     }
   },
-  async getTagsList ({ commit, state }) {
+  async getTagsList({ commit, state }) {
     try {
-      const tags = await this.$tagsService.viewTags()
-      commit('setTagList', tags?.items)
+      const tags = await this.$tagsService.viewTags();
+      commit("setTagList", tags?.items);
     } catch (e) {
-      this.$helper.snackbar(e, 'getTagsList')
+      this.$helper.snackbar(e, "getTagsList");
     }
   },
-  async getBranchList ({ commit, state }) {
+  async getBranchList({ commit, state }) {
     try {
-      const branches = await this.$branchesService.list()
-      commit('setBranchList', branches)
+      const branches = await this.$branchesService.list();
+      commit("setBranchList", branches);
     } catch (e) {
-      this.$helper.snackbar(e, 'getBranchList')
+      this.$helper.snackbar(e, "getBranchList");
     }
   },
-  async getLineList ({ commit, state }, item) {
+  async getLineList({ commit, state }, item) {
     try {
-      const lines = await this.$polygonLinesService.list({ polygon_uid: item.polygon_uid })
-      commit('setLineList', lines)
+      const lines = await this.$polygonLinesService.list({
+        polygon_uid: item.polygon_uid
+      });
+      commit("setLineList", lines);
     } catch (e) {
-      this.$helper.snackbar(e, 'getLineList')
+      this.$helper.snackbar(e, "getLineList");
     }
   },
-  async getAllLines ({ commit, state }) {
+  async getAllLines({ commit, state }) {
     try {
-      const lines = await this.$polygonLinesService.viewLines()
-      commit('setLineList', lines)
+      const lines = await this.$polygonLinesService.viewLines();
+      commit("setLineList", lines);
     } catch (e) {
-      this.$helper.snackbar(e, 'getAllLines')
+      this.$helper.snackbar(e, "getAllLines");
     }
   },
   /**
@@ -206,28 +227,28 @@ export const actions = {
    * @param rootGetters
    * @returns {Promise<void>}
    */
-  async getBranches ({ commit, rootGetters }, form) {
+  async getBranches({ commit, rootGetters }, form) {
     try {
-      const branches = await this.$branchesService.list(form)
-      commit('setBranches', branches)
+      const branches = await this.$branchesService.list(form);
+      commit("setBranches", branches);
     } catch (e) {
-      this.$helper.snackbar(e, 'getBranches')
+      this.$helper.snackbar(e, "getBranches");
     }
   },
-  async getExits ({ commit, rootGetters }) {
+  async getExits({ commit, rootGetters }) {
     try {
-      const exits = await this.$exitsManagementService.list()
-      commit('setExits', exits)
+      const exits = await this.$exitsManagementService.list();
+      commit("setExits", exits);
     } catch (e) {
-      this.$helper.snackbar(e, 'getExits')
+      this.$helper.snackbar(e, "getExits");
     }
   },
-  async getCities ({ commit, rootGetters }) {
+  async getCities({ commit, rootGetters }) {
     try {
-      const cities = await this.$cityService.list({ params: { chars: ' ' } })
-      commit('setCities', cities)
+      const cities = await this.$cityService.list({ params: { chars: " " } });
+      commit("setCities", cities);
     } catch (e) {
-      this.$helper.snackbar(e, 'getCities')
+      this.$helper.snackbar(e, "getCities");
     }
   }
-}
+};

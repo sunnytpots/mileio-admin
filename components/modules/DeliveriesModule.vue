@@ -639,7 +639,7 @@ export default {
             take: newOptions.itemsPerPage
           }
           this.sortBy = {
-            value: (sortBy[0] === 'last_scan' || sortBy[0] === 'collected_date') ? 'status_data.status_history.updated_at' : sortBy[0],
+            value: (sortBy[0] === 'last_scan' || sortBy[0] === 'collected_date') ? 'status_data.status_history.updated_at' : (sortBy[0] === 'status') ? 'status.key' : sortBy[0],
             sortOrder: sortDesc[0] ? 'DESC' : 'ASC'
           };
           await this.getDeliveriesViews()

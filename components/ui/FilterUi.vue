@@ -471,7 +471,7 @@
                     v-on="on"/>
                 </template>
                 <v-date-picker
-                  v-model="value.created_date"
+                  v-model="value.created_at"
                   @input="createdDateForm = false" />
               </v-menu>
             </v-col>
@@ -902,7 +902,7 @@ export default {
     'value.collected_date' (newVal) {
       this.formattedCollectedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
     },
-    'value.created_date' (newVal) {
+    'value.created_at' (newVal) {
       this.formattedCreatedDate = newVal ? moment(newVal).format('DD-MM-YYYY') : 'תאריך מסירה'
     },
     'value.delivered_date' (newVal) {
