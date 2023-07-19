@@ -843,15 +843,15 @@ export default {
       if (!(statusHistory?.length > 1)) {
         return
       }
-
+      
       let lastScanDate
-      const scanStatuses = ['enter_to', 'exit_to', 'stored', 'packed']
-      for (const status of statusHistory) {
-        if (scanStatuses.includes(status.key)) {
-          lastScanDate = status.updated_at
-        }
-      }
-
+      // const scanStatuses = ['enter_to', 'exit_to', 'stored', 'packed']
+      // for (const status of statusHistory) {
+      //   if (scanStatuses.includes(status.key)) {
+          lastScanDate = statusHistory[statusHistory.length - 1]?.updated_at
+      //   }
+      // }
+      
       return lastScanDate
     },
     resetOtherLogs (indexToKeep) {

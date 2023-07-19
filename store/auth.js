@@ -1,5 +1,5 @@
-import Cookie from 'cookie'
-import Cookies from 'js-cookie'
+import Cookie from "cookie";
+import Cookies from "js-cookie";
 // import jwtDecode from 'jwt-decode'
 
 export const state = () => ({
@@ -11,41 +11,41 @@ export const state = () => ({
   branchNameSelected: null,
   status: null,
   errors: null
-})
+});
 
 export const mutations = {
-  setAuthUser (state, authUser) {
-    state.authUser = authUser
+  setAuthUser(state, authUser) {
+    state.authUser = authUser;
   },
 
-  setPermissions (state, permissions) {
-    state.permissions = permissions
+  setPermissions(state, permissions) {
+    state.permissions = permissions;
   },
 
-  setBranches (state, branches) {
-    state.branches = branches
+  setBranches(state, branches) {
+    state.branches = branches;
   },
 
-  setBranchSelected (state, branchId) {
-    state.branchSelected = branchId
+  setBranchSelected(state, branchId) {
+    state.branchSelected = branchId;
   },
 
-  setBranchNameSelected (state, branchName) {
-    state.branchNameSelected = branchName
+  setBranchNameSelected(state, branchName) {
+    state.branchNameSelected = branchName;
   },
 
-  setToken (state, token) {
-    state.token = token
+  setToken(state, token) {
+    state.token = token;
   },
 
-  setStatus (state, status) {
-    state.status = status
+  setStatus(state, status) {
+    state.status = status;
   },
 
-  setErrors (state, errors) {
-    state.errors = errors
+  setErrors(state, errors) {
+    state.errors = errors;
   }
-}
+};
 
 export const actions = {
   /**
@@ -57,43 +57,44 @@ export const actions = {
    * @param typeUrl
    * @returns {Promise<void>}
    */
-  async login ({ commit, dispatch }, { form, typeUrl }) {
+  async login({ commit, dispatch }, { form, typeUrl }) {
     try {
-      commit('setStatus', null)
-      commit('setErrors', null)
+      commit("setStatus", null);
+      commit("setErrors", null);
 
-      const response = await this.$axios.$post(`auth/${typeUrl}`, form)
+      const response = await this.$axios.$post(`auth/${typeUrl}`, form);
       if (response.token) {
-        dispatch('setTokenDispatch', response.token)
-        commit('setStatus', true)
-        commit('setErrors', null)
-        await dispatch('getUser')
+        dispatch("setTokenDispatch", response.token);
+        commit("setStatus", true);
+        commit("setErrors", null);
+        await dispatch("getUser");
+        window.location.reload();
       }
     } catch (e) {
-      commit('setStatus', false)
-      commit('setErrors', e.response.data.message)
+      commit("setStatus", false);
+      commit("setErrors", e.response.data.message);
     }
   },
-  restore ({ commit, dispatch }, form) {
+  restore({ commit, dispatch }, form) {
     try {
-      commit('setStatus', null)
-      commit('setErrors', null)
+      commit("setStatus", null);
+      commit("setErrors", null);
 
-      return this.$authService.forgotPassword(form)
+      return this.$authService.forgotPassword(form);
     } catch (e) {
-      commit('setStatus', false)
-      commit('setErrors', e.response.data.message)
+      commit("setStatus", false);
+      commit("setErrors", e.response.data.message);
     }
   },
-  resetPassword ({ commit, dispatch }, form) {
+  resetPassword({ commit, dispatch }, form) {
     try {
-      commit('setStatus', null)
-      commit('setErrors', null)
+      commit("setStatus", null);
+      commit("setErrors", null);
 
-      return this.$authService.resetPassword(form)
+      return this.$authService.resetPassword(form);
     } catch (e) {
-      commit('setStatus', false)
-      commit('setErrors', e.response.data.message)
+      commit("setStatus", false);
+      commit("setErrors", e.response.data.message);
     }
   },
 
@@ -103,19 +104,19 @@ export const actions = {
    * @param commit
    * @returns {Promise<void>}
    */
-  async logout ({ commit }) {
+  async logout({ commit }) {
     try {
-      const response = await this.$authService.logout()
+      const response = await this.$authService.logout();
       if (!response) {
-        return
+        return;
       }
 
-      await this.$axios.setToken(false)
-      commit('setToken', null)
-      commit('setAuthUser', null)
-      Cookies.remove('token')
+      await this.$axios.setToken(false);
+      commit("setToken", null);
+      commit("setAuthUser", null);
+      Cookies.remove("token");
     } catch (e) {
-      this.$helper.snackbar(e, 'logout')
+      this.$helper.snackbar(e, "logout");
     }
   },
 
@@ -126,16 +127,24 @@ export const actions = {
    * @param state
    * @returns {Promise<void>}
    */
-  async getUser ({ commit, state }) {
+  async getUser({ commit, state }) {
     try {
-      const authUser = await this.$systemUsersService.viewOne()
-      commit('setAuthUser', authUser)
-      commit('setPermissions', authUser.permissions)
-      commit('setBranches', authUser.branches)
-      commit('setBranchSelected', authUser.branches && authUser.branches.length && authUser.branches[0].id)
-      commit('setBranchNameSelected', authUser.branches && authUser.branches.length && authUser.branches[0].name)
+      const authUser = await this.$systemUsersService.viewOne();
+      commit("setAuthUser", authUser);
+      commit("setPermissions", authUser.permissions);
+      commit("setBranches", authUser.branches);
+      commit(
+        "setBranchSelected",
+        authUser.branches && authUser.branches.length && authUser.branches[0].id
+      );
+      commit(
+        "setBranchNameSelected",
+        authUser.branches &&
+          authUser.branches.length &&
+          authUser.branches[0].name
+      );
     } catch (e) {
-      console.log(e.response, 'getUser')
+      console.log(e.response, "getUser");
       // if(e.response.status === 401) {
       //   await this.$axios.setToken(false)
       //   commit('clearToken')
@@ -153,10 +162,10 @@ export const actions = {
    * @param commit
    * @param token
    */
-  setTokenDispatch ({ commit }, token) {
+  setTokenDispatch({ commit }, token) {
     // await this.$axios.setToken(token, 'Bearer')
-    commit('setToken', token)
-    Cookies.set('token', token)
+    commit("setToken", token);
+    Cookies.set("token", token);
   },
 
   /**
@@ -164,26 +173,29 @@ export const actions = {
    *
    * @param dispatch
    */
-  autoLogin ({ dispatch }) {
-    const cookieStr = process.browser ? document.cookie : this.app.context.req.headers.cookie
-    const cookies = Cookie.parse(cookieStr || '') || {}
-    const token = cookies.token
+  autoLogin({ dispatch }) {
+    const cookieStr = process.browser
+      ? document.cookie
+      : this.app.context.req.headers.cookie;
+    const cookies = Cookie.parse(cookieStr || "") || {};
+    const token = cookies.token;
 
     // const validToken = isValidToken(token)
 
-    dispatch('setTokenDispatch', token)
+    dispatch("setTokenDispatch", token);
   }
-}
+};
 
 export const getters = {
   isAuth: state => !!state.authUser,
 
-  customer: state => state.authUser ? state.authUser.customer : {},
+  customer: state => (state.authUser ? state.authUser.customer : {}),
 
-  branchSelected: state => state.branchSelected ? state.branchSelected : null,
+  branchSelected: state => (state.branchSelected ? state.branchSelected : null),
 
-  branchNameSelected: state => state.branchNameSelected ? state.branchNameSelected : null
-}
+  branchNameSelected: state =>
+    state.branchNameSelected ? state.branchNameSelected : null
+};
 
 // function isValidToken (token) {
 //   if (!token) {
