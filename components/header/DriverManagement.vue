@@ -185,7 +185,6 @@ export default {
     async loadDriversData () {
       try {
         this.loading = true
-        await this.$store.dispatch('auth/getUser')
         await this.$store.dispatch('global/getDriverList', {
           filter: { branch_id: this.branchSelected },
           sortByActiveTasks: true
